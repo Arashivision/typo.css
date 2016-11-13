@@ -40,8 +40,13 @@
 2. 衬线字体：添加 `.serif`  
  
 
+### 三、Todos
+  
+1. 移动端适配
+2. 兼容性检查
+3. Insta360 Web UI 字体设置
 
-### 三、针对 Typo.css 做出的调整
+### 四、针对 Typo.css 做出的调整
 
 1. 用 less 改写 Typo.css
 2. 去除 `class="typo-标签"`、`.clearfix`、`.borderbox`的用法
@@ -52,7 +57,7 @@
 7. 优化了 `<ul>`、`<ol>`、`<blockquote>` 嵌套进其他元素时的样式
 8. 设置了 `<img>` 标签在文中的间距
 
-### 四、开源许可
+### 五、开源许可
 基于 [MIT License][4] 开源，使用代码只需说明来源，或者引用 [license.txt][5] 即可。
 
 [1]:	https://arashivision.github.io/typo.less
