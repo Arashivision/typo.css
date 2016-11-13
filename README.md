@@ -1,43 +1,59 @@
-## 中文网页重设与排版：
+## 针对 Insta360 优化的 Typo.css
 
 目标：一致化浏览器排版效果，构建最适合中文阅读的网页排版。包括桌面和移动平台。
 
-预览：[typo.css](http://typo.sofi.sh)
+预览：[typo.css][1]
 
-### 一、目录结构    
+### 一、目录结构  
     .
-    ├── README.md           --- 使用帮助
-    ├── license.txt         --- 许可证
-    ├── typo.css            --- 将应用于你的项目
-    └── typo.html           --- Demo/预览
+	├── README.md           --- 使用帮助
+	├── license.txt         --- 许可证
+	├── less                --- 将应用于你的项目
+	├───── typo.less        --- 排版核心文件
+	├───── colors.less      --- Insta360 品牌颜色库
+	├───── style.less       --- 用于支持预览页面
+	├── js
+	├───── less.min.js      --- less
+	└── index.html          --- Demo/预览
 
 
-### 二、TYPO.CSS 的设计和使用
+### 二、Typo.less 使用指南
 
 
-## TYPO.CSS 主要包括：
+## Typo.less 主要包括：
 
 1、一般 reset.css 所需的内容
  
-目前的设计是这样的，尽量保持完整的 reset，比如让 ul/ol 无样式并且无多余的 `padding`/`margin`，这是必须的，因为一个网可能需要很多自定义的的内容，在实践中我们并不希望像 ul/ol 有样式，这样我们得用优先级去覆盖，这是非常麻烦的事。所以 typo.css 并不像 normalize.css，后者给每一个元素都预先定义了样式，这样在自定义的时候将是非常痛苦的。要大保持干净的所有元素一致化的 reset 才是最佳实践。
+将元素默认样式清零重设。
 
-2、`class="typo"` 阅读内容排版
+2、正文排版设置
 
-在文章/文档阅读的页面，需添加 `.typo` 这个 class，这样 table/ol/ul 等都会有预定的样式，让你的排版像 [http://typo.sofi.sh](http://typo.sofi.sh) 一样，让用户阅读起来更舒服。
+在承载大段可阅读文章的容器上，添加 `.typo` 这个 class，让你的排版像 [http://typo.sofi.sh][2] 一样，让用户阅读起来更舒服。
 
-在父容器在没有添加 `class="typo"` 的时候，可以使用 `class="typo-标签"`（如 `class="typo-ul"`）来实现像 `.typo > ul` 这样结构的样式。
- 
-3、增加类：
+3、Web UI 字体设置 （待做）
+
+4、辅助类：
 
 主要是一些需要中文日常排版需要的元素和语文对应样式的增强，目前包括：
+(1) 强制换行：添加 `.textwrap` 到文本所在的容器，如果是 `table` 测还需要 `.textwrap-table` <br />
+(2) 衬线字体：添加 `.serif` <br />
 
-(1) 专名号：使用标签 `<u>` 或者 `.typo-u` <br />
-(2) 着重号：使用 class `.typo-em` <br />
-(3) 清理浮动：与一般 reset.css 保持一致 `.clearfix` <br />
-(4) 强制换行：添加 `.textwrap` 到文本所在的容器，如果是 `table` 测还需要 `.textwrap-table` <br />
-(5) 衬线字体：添加 `.serif` <br />
-(6) 创建 border-box：在 html 中添加 `.borderbox` [#why](http://www.paulirish.com/2012/box-sizing-border-box-ftw/)
+### 三、针对 Typo.css 做出的改进
 
+1. 用 less 改写 Typo.css
+2. 去除 `class="typo-标签"`、`.clearfix`、`.borderbox`的用法
+3. 重新设计了 `<p>`、`<h1>-<h6>` 的字号、行距、字重、间距
+4. 借鉴 [font.css][3] 重设了衬线和非衬线字体，引入 Roboto 字体
+5. 依照 Insta360 品牌配色重设了链接、高亮、引用、`::selection`等的颜色
+6. 让文字适配 4pt 栅格（待完善）
+7. 优化了 `<ul>`、`<ol>`、`<blockquote>` 嵌套进其他元素时的样式
+8. 设置了 `<img>` 标签在文中的间距
 
-### 三、开源许可
-基于 [MIT License](http://zh.wikipedia.org/wiki/MIT_License) 开源，使用代码只需说明来源，或者引用 [license.txt](https://github.com/sofish/typo.css/blob/master/license.txt) 即可。
+### 四、开源许可
+基于 [MIT License][4] 开源，使用代码只需说明来源，或者引用 [license.txt][5] 即可。
+
+[1]:	http://typo.sofi.sh
+[2]:	http://typo.sofi.sh
+[3]:	https://github.com/zenozeng/fonts.css "Font.css"
+[4]:	http://zh.wikipedia.org/wiki/MIT_License
+[5]:	https://github.com/sofish/typo.css/blob/master/license.txt

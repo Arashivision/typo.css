@@ -1,0 +1,472 @@
+@charset "utf-8";
+
+/**********************/
+/*        参数         */
+/**********************/
+
+/*   请只更改这些参数    */
+
+  //字体
+  @typo-font-family-sans-serif: "Roboto",-apple-system, BlinkMacSystemFont, "Helvetica Neue",Helvetica,"Nimbus Sans L", Arial,  "Liberation Sans", "Hiragino Sans GB", "Source Han Sans CN", "Source Han Sans SC", "Microsoft Yahei", "WenQuanYi Micro Hei",  "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp","Heiti SC", sans-serif;
+  @typo-font-family-serif:      Palatino, Optima, Georgia,"Times New Roman", "Liberation Serif", STFangsong, FangSong, FangSong_GB2312, "CWTEX\-F", serif;
+  @typo-font-family-mono:       Courier, 'Courier New', monospace;
+  //字号
+  @typo-font-size-m:       16px;
+  //行距
+  @typo-line-height-m:     @typo-font-size-m * 2;
+  //字重
+  @typo-font-weight-m:     400;
+  //线条粗细
+  @typo-border-weight-m:   1px;
+  //颜色
+  @typo-color-bg1:         @colors-dark-white;
+  @typo-color-bg2:         @colors-light-light-gray;
+  @typo-color-border:      @colors-light-gray;
+  @typo-color-notes:       @colors-dark-silver;
+  @typo-color-read:        @colors-dark-medium-gray;
+  @typo-color-body:        @colors-dark-dim-gray;
+  @typo-color-title:       @colors-black;
+
+  @typo-color-highlight:   @colors-cold-yellow;
+  @typo-color-link:        @colors-dark-dim-gray;
+
+  /*  以下为自动计算参数   */
+  @typo-font-size-xs:      @typo-font-size-m * 0.75;
+  @typo-font-size-s:       @typo-font-size-m * 0.875;
+  @typo-font-size-l:       @typo-font-size-m * 1.25;
+  @typo-font-size-xl:      @typo-font-size-m * 1.75;
+  @typo-font-size-xxl:     @typo-font-size-m * 2.25;
+  @typo-font-size-xxxl:    @typo-font-size-m * 3.00;
+
+  @typo-line-height-s:     @typo-line-height-m * 0.75;
+  @typo-line-height-l:     @typo-line-height-m * 1.25;
+  @typo-line-height-xl:    @typo-line-height-m * 1.5;
+  @typo-line-height-xxl:   @typo-line-height-m * 1.875;
+
+  @typo-font-weight-xxs:   @typo-font-weight-m - 300;
+  @typo-font-weight-xs:    @typo-font-weight-m - 200;
+  @typo-font-weight-s:     @typo-font-weight-m - 100;
+  @typo-font-weight-l:     @typo-font-weight-m + 200;
+  @typo-font-weight-xl:    @typo-font-weight-m + 300;
+
+  @typo-border-weight-l:   @typo-border-weight-m * 2;
+  @typo-border-weight-xl:  @typo-border-weight-m * 4;
+  @typo-border-weight-xxl: @typo-border-weight-m * 6;
+
+/**********************/
+/*      helper        */
+/**********************/
+.selection(@color; @bg) {
+  &::selection {
+    -webkit-font-smoothing: antialiased;
+    color: @color;
+    text-shadow: none;
+    background: @bg;
+    background: fadeout(@bg, 1%);
+  }
+  &::-moz-selection {
+    -webkit-font-smoothing: antialiased;
+    color: @color;
+    text-shadow: none;
+    background: @bg;
+    background: fadeout(@bg, 1%);
+  }
+}
+
+/**********************/
+/*      全局重设       */
+/**********************/
+
+    /* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
+    html {
+      color: @typo-color-read;
+      background: @colors-white;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      text-rendering: optimizelegibility;
+    }
+
+    /* 如果你的项目仅支持 IE9+ | Chrome | Firefox 等，推荐在 <html> 中添加 .borderbox 这个 class */
+    html.borderbox *, html.borderbox *:before, html.borderbox *:after {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    /* 内外边距通常让各个浏览器样式的表现位置不同 */
+    body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, menu, nav, section, select, textarea,img {
+      margin: 0;
+      padding: 0;
+      font-family: @typo-font-family-sans-serif;
+      font-weight: @typo-font-weight-s;
+      font-size: @typo-font-size-m;
+      line-height: @typo-line-height-m;
+      .selection(@typo-color-title; @typo-color-highlight);
+    }
+
+    /* 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) */
+    article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+      display: block;
+    }
+
+    button::-moz-focus-inner,
+    input::-moz-focus-inner {
+      padding: 0;
+      border: 0;
+    }
+    /* Firefox 以外，元素没有下划线，需添加 */
+    acronym, abbr {
+      border-bottom: @typo-border-weight-m dotted;
+      font-variant: normal;
+    }
+
+    /* 添加鼠标问号，进一步确保应用的语义是正确的（要知道，交互他们也有洁癖，如果你不去掉，那得多花点口舌） */
+    abbr {
+      cursor: help;
+      .selection(@typo-color-title; @typo-color-highlight);
+    }
+
+    /* 一致的 del 样式 */
+    del {
+      text-decoration: line-through;
+      .selection(@typo-color-title; @typo-color-highlight);
+    }
+
+    address, caption, cite, code, dfn, em, th, var {
+      font-style: normal;
+      font-weight: @typo-font-weight-s;
+      .selection(@typo-color-title; @typo-color-highlight);
+    }
+
+    /* 去掉列表前的标识, li 会继承，大部分网站通常用列表来很多内容，所以应该当去 */
+    ul, ol {
+      list-style: none;
+      .selection(@typo-color-title; @typo-color-highlight);
+    }
+
+    /* 对齐是排版最重要的因素, 别让什么都居中 */
+    caption, th {
+      text-align: left;
+      .selection(@typo-color-title; @typo-color-highlight);
+    }
+
+    /* 可拖动文件添加拖动手势 */
+    [draggable] {
+      cursor: move;
+    }
+
+    /* 强制文本换行 */
+    .textwrap, .textwrap td, .textwrap th {
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .textwrap-table {
+      table-layout: fixed;
+    }
+
+    /* 统一上标和下标 */
+    sub, sup {
+      font-size: 0.75em;
+      line-height: 0;
+      position: relative;
+      .selection(@typo-color-title; @typo-color-highlight);
+    }
+
+    :root sub, :root sup {
+      vertical-align: baseline; /* for ie9 and other modern browsers */
+    }
+
+    sup {
+      top: -0.5em;
+    }
+
+    sub {
+      bottom: -0.25em;
+    }
+    a {
+      color: @typo-color-read;
+      text-decoration: none;
+      .selection(@typo-color-title; @typo-color-highlight);
+    }
+
+    a:hover {
+      border-bottom: @typo-border-weight-m solid @typo-color-link;
+      color: @typo-color-link;
+      text-decoration: none;
+    }
+
+/**********************/
+/*      正文排版       */
+/**********************/
+
+.typo{
+  font-weight: @typo-font-weight-s;
+  color: @typo-color-read;
+  font-size: @typo-font-size-m;
+  line-height: @typo-line-height-m; 
+  font-family: @typo-font-family-sans-serif;
+  .selection(@typo-color-title; @typo-color-highlight);
+
+  h1, h2, h3, h4, h5, h6{
+    font-weight: @typo-font-weight-l;
+    color: @typo-color-body;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    .selection(@typo-color-title; @typo-color-highlight);
+  }
+  h1{
+    font-size: @typo-font-size-xxl;
+    line-height: @typo-line-height-xl;
+  }
+  h2{
+    font-size: @typo-font-size-xl;
+    line-height: @typo-line-height-l;
+  }
+  h3{
+    font-size: @typo-font-size-l;
+    line-height: @typo-line-height-m;
+  }
+  h4,h5,h6{
+    font-size: @typo-font-size-m;
+    line-height: @typo-line-height-s;
+  }
+  p{
+    font-weight: @typo-font-weight-s;
+    color: @typo-color-read;
+    font-size: @typo-font-size-m;
+    line-height: @typo-line-height-m; 
+    .selection(@typo-color-title; @typo-color-highlight);
+  }
+
+  /* 在文章中，应该还原 ul 和 ol 的样式 */
+  ul{
+    display: block;
+    margin-left: 1.3em;
+    list-style: disc;
+    font-size: inherit;
+    line-height: inherit; 
+    font-weight: inherit;
+    color:inherit;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  ol{
+    display: block;
+    list-style: decimal;
+    margin-left: 1.9em;
+    font-size: inherit;
+    line-height: inherit; 
+    font-weight: inherit;
+    color:inherit;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  li{
+    font-size: inherit;
+    line-height: inherit; 
+    font-weight: inherit;
+    color:inherit;
+  }
+
+  li ul,li ol{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 2em;
+  }
+
+  li ul{
+    list-style: circle;
+  }
+
+  /* HTML5 媒体文件跟 img 保持一致 */
+  audio, canvas, video, img {
+    display: block;
+    line-height: 0;
+    .selection(@typo-color-title; fade(@typo-color-highlight,50%));
+  }
+
+  /* 去除默认边框 */
+  fieldset, img {
+    border: 0;
+  }
+
+  /* 块/段落引用 */
+  blockquote {
+    display: block;
+    color: @typo-color-notes;
+    font-weight: inherit;
+    border-left: @typo-border-weight-xxl solid @typo-color-border;
+    line-height: inherit;
+    padding: 1em 1.5em;
+    margin: 1em 3em 1em 2em;
+    background-color: @typo-color-bg1;
+  }
+
+  @media only screen and ( max-width: 640px ) {
+    blockquote {
+      margin: 1em 0;
+    }
+  }
+
+  q:before, q:after {
+    content: '';
+  }
+
+  a {
+    font-weight: @typo-font-weight-l;
+    font-size: inherit;
+    color: @typo-color-link;
+    line-height: inherit;
+    border-bottom: @typo-border-weight-l solid @typo-color-highlight;
+    -webkit-transition: all .25s ease;
+       -moz-transition: all .25s ease;
+        -ms-transition: all .25s ease;
+         -o-transition: all .25s ease;
+            transition: all .25s ease;
+  }
+
+  a:hover {
+    // border-bottom: @typo-border-weight-m solid @typo-color-title;
+    color: @typo-color-title;
+    background: @typo-color-highlight;
+    text-decoration: none;
+    -webkit-transition: all .25s ease;
+       -moz-transition: all .25s ease;
+        -ms-transition: all .25s ease;
+         -o-transition: all .25s ease;
+            transition: all .25s ease;
+  }
+
+  /* 专名号：虽然 u 已经重回 html5 Draft，但在所有浏览器中都是可以使用的，
+   * 要做到更好，向后兼容的话，添加 class="typo-u" 来显示专名号
+   * 关于 <u> 标签：http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-u-element
+   * 被放弃的是 4，之前一直搞错 http://www.w3.org/TR/html401/appendix/changes.html#idx-deprecated
+   * 一篇关于 <u> 标签的很好文章：http://html5doctor.com/u-element/
+   */
+  u, .typo-u {
+    text-decoration: underline;
+    .selection(@typo-color-title; @typo-color-highlight);
+  }
+
+  i{
+    .selection(@typo-color-title; @typo-color-highlight);
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+  }
+
+  /* 标记，类似于手写的荧光笔的作用 */
+  mark {
+    background: @typo-color-highlight;
+    padding: 0.125em;
+    margin: 0 0.25em;
+    .selection(@colors-white; @typo-color-title);
+  }
+
+  /* 代码片断 */
+  pre, code, pre tt {
+    font-family: @typo-font-family-mono;
+    .selection(@typo-color-title; @typo-color-highlight);
+  }
+
+  pre {
+    background: @typo-color-bg1;
+    border: @typo-border-weight-m solid @typo-color-border;
+    padding: 1em 1.5em;
+    display: block;
+    overflow: auto; 
+    overflow-y:hidden;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  /* 一致化 horizontal rule */
+  hr {
+    border: none;
+    border-bottom: @typo-border-weight-m solid @typo-color-border;
+    margin-bottom: 2em;
+    height: 2em;
+    .selection(@typo-color-title; @typo-color-highlight);
+  }
+
+  /* 底部印刷体、版本等标记 */
+  small,
+    /* 图片说明 */
+  figcaption {
+    font-size: @typo-font-size-m * 0.875;
+    line-height: @typo-line-height-m * 0.75;
+    color: @typo-color-notes;
+    .selection(@typo-color-title; @typo-color-highlight);
+  }
+
+  strong, b {
+    font-weight: @typo-font-weight-l;
+    color: @typo-color-title;
+    font-size: inherit;
+    line-height: inherit;
+    .selection(@typo-color-title; @typo-color-highlight);
+  }
+
+  /* 去掉各 Table cell 的边距并让其边重合 */
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  /* 同 ul/ol，在文章中应用 table 基本格式 */
+  table th, table td, th, td, table caption {
+    border: @typo-border-weight-m solid @typo-color-border;
+    padding: 0.4em 1em;
+    color: @typo-color-read;
+  }
+
+  table th, th {
+    background:@typo-color-bg1;
+  }
+
+  table thead th, thead th {
+    background:@typo-color-bg2;
+  }
+
+  table caption {
+    border-bottom: none;
+  }
+
+  em, legend, caption {
+    color: @typo-color-body;
+    font-weight: inherit;
+  }
+
+  /* 着重号，只能在少量（少于100个字符）且全是全角字符的情况下使用 */
+  em {
+    position: relative;
+  }
+
+  em:after {
+    position: absolute;
+    top: 0.4em;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    content: "・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・";
+  }
+
+  /* Responsive images */
+  img,table {
+    max-width: 100%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  /* 提供 serif 版本的字体设置: iOS 下中文自动 fallback 到 sans-serif */
+  .serif {
+    font-family: @typo-font-family-serif;
+  }
+}//end .typo
