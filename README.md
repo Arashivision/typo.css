@@ -1,8 +1,8 @@
 ## 针对 Insta360 优化的 Typo.css
 
-	目标：一致化浏览器排版效果，构建最适合中文阅读的网页排版。包括桌面和移动平台。
+目标：一致化浏览器排版效果，构建最适合中文阅读的网页排版。包括桌面和移动平台。
 
-	预览：[typo.css][1]
+预览：[typo.css][1]
 
 ### 一、目录结构  
     .
@@ -17,23 +17,23 @@
 	└── index.html          --- Demo/预览
 
 
-### 二、Typo.less 使用指南
+### 二、Typo.less 使用指南  
 
-1. 一般 reset.css 所需的内容
+####1. 一般 reset.css 所需的内容  
  
-	将元素默认样式清零重设。
+	将元素默认样式清零重设。  
 
-2. 正文排版设置
+####2. 正文排版设置  
 
 	在承载大段可阅读文章的容器上，添加 `.typo` 这个 class，让你的排版像 [http://typo.sofi.sh][2] 一样，让用户阅读起来更舒服。
 
-3. Web UI 字体设置 （待做）
+####3. Web UI 字体设置 （待做）  
 
-4. 辅助类：
+####4. 辅助类：  
 
-	主要是一些需要中文日常排版需要的元素和语文对应样式的增强，目前包括： <br />    
-	(1) 强制换行：添加 `.textwrap` 到文本所在的容器，如果是 `table` 测还需要 `.textwrap-table` <br />  
-	(2) 衬线字体：添加 `.serif` <br />  
+	主要是一些需要中文日常排版需要的元素和语文对应样式的增强，目前包括:  
+	1. 强制换行：添加 `.textwrap` 到文本所在的容器，如果是 `table` 测还需要 `.textwrap-table` 
+	2. 衬线字体：添加 `.serif`
 
 ### 三、针对 Typo.css 做出的改进
 
@@ -49,7 +49,7 @@
 ### 四、开源许可
 基于 [MIT License][4] 开源，使用代码只需说明来源，或者引用 [license.txt][5] 即可。
 
-[1]:	https://arashivision.github.io/typo.less/
+[1]:	https://arashivision.github.io/typo.less
 [2]:	http://typo.sofi.sh
 [3]:	https://github.com/zenozeng/fonts.css "Font.css"
 [4]:	http://zh.wikipedia.org/wiki/MIT_License
