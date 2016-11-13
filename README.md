@@ -22,20 +22,23 @@
 ####1. 一般 reset.css 所需的内容  
  
 将元素默认样式清零重设。  
-
+  
+  
 ####2. 正文排版设置  
 
-在承载大段可阅读文章的容器上，添加 `.typo` 这个 class，让你的排版像 [http://typo.sofi.sh][2] 一样，让用户阅读起来更舒服。
+在承载大段可阅读文章的容器上，添加 `.typo` 这个 class，让你的排版像 [http://typo.sofi.sh][2] 一样，让用户阅读起来更舒服。  
+  
+  
+####3. Web UI 字体设置 （待做）   
+  
 
-####3. Web UI 字体设置 （待做）  
-
-####4. 辅助类：  
-
+####4. 辅助类：   
 主要是一些需要中文日常排版需要的元素和语文对应样式的增强，目前包括:  
 1. 强制换行：添加 `.textwrap` 到文本所在的容器，如果是 `table` 测还需要 `.textwrap-table` 
-2. 衬线字体：添加 `.serif`
+2. 衬线字体：添加 `.serif`  
+  
 
-### 三、针对 Typo.css 做出的改进
+### 三、针对 Typo.css 做出的调整
 
 1. 用 less 改写 Typo.css
 2. 去除 `class="typo-标签"`、`.clearfix`、`.borderbox`的用法
@@ -50,7 +53,7 @@
 基于 [MIT License][4] 开源，使用代码只需说明来源，或者引用 [license.txt][5] 即可。
 
 [1]:	https://arashivision.github.io/typo.less
-[2]:	http://typo.sofi.sh
+[2]:	https://arashivision.github.io/typo.less
 [3]:	https://github.com/zenozeng/fonts.css "Font.css"
 [4]:	http://zh.wikipedia.org/wiki/MIT_License
 [5]:	https://github.com/sofish/typo.css/blob/master/license.txt
