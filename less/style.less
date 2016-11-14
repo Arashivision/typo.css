@@ -1,13 +1,20 @@
 @import "colors"; 
 @import "typo";
 
+body{ width:90%; max-width: 960px; background:#fff; margin:3em auto 0; padding-top:2em;}
 #wrapper,#wrapper2{
-	width: 648px;
-	margin: 0 auto;
-	padding: 72px;
+	padding:5% 10%; 
+	position:relative;
 }
 #wrapper2{
 	background-image: url('../images/4pt-base-line.png'); 
 	background-repeat: repeat-y;
 	background-size: 1280px 4px;
 }
+@media only screen and (max-width: 640px) {
+      table{ word-break:break-all;word-wrap:break-word;font-size:12px; }
+      .typo table th, .typo table td, .typo-table th, .typo-table td .typo table caption {
+        padding: 0.5em;
+      }
+      #fork{ display:none; }
+    }
